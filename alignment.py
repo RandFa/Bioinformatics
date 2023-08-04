@@ -13,16 +13,7 @@ def GreedyChange(money, coins):
                 money = money - coin
                 break
     return change
-# def RecursiveChange(money, Coins):
-#     """
-#     """
-#     moneys = []
-#     for coin in Coins:
-#         m = money - coin
-#         if m > 0:
-#             moneys.append([m])
-#     for m in moneys:
-#         m.extend(RecursiveChange(m[0], Coins))
+
 
 def RecursiveChange(money, Coins):
     if money == 0:
@@ -35,15 +26,8 @@ def RecursiveChange(money, Coins):
                 MinNumCoins = NumCoins + 1
     return MinNumCoins
 
-# def HanoiTowers(n, startPeg, destinationPeg):
-#     if n == 1:
-#         Move top disk from startPeg to destinationPeg
-#         return
-#     transitPeg = 6 − startPeg − destinationPeg
-#     HanoiTowers(n − 1, startPeg, transitPeg)
-#     Move top disk from startPeg to destinationPeg
-#     HanoiTowers(n − 1, transitPeg, destinationPeg)
-#     return
+
+
 def DPChange(money, Coins):
     """
     Input: An integer money and an array Coins = (coin1, ..., coind).
@@ -63,6 +47,9 @@ def DPChange(money, Coins):
                 newmin[a] = MinNumCoins[a]
             MinNumCoins= newmin
     return MinNumCoins[money]
+
+
+
 def ManhattanTourist(n, m, Down, Right):
     """
     Input: Integers n and m, followed by an n × (m + 1) matrix Down and an (n + 1) × m matrix Right. The two matrices are separated by the "-" symbol.
@@ -86,6 +73,9 @@ def ManhattanTourist(n, m, Down, Right):
                 s[(i,j)] = south
                 maps[(i,j)] = (i-1,j)
     return s[(n,m)], maps
+
+
+
 def ModifiedManhattanTourist(n, m, Down, Right, Horizantal):
     """
     Input: Integers n and m, followed by an n × (m + 1) matrix Down and an (n + 1) × m matrix Right. The two matrices are separated by the "-" symbol.
@@ -113,21 +103,10 @@ def ModifiedManhattanTourist(n, m, Down, Right, Horizantal):
                 s[(i,j)] = south
                 maps[(i,j)] = (i-1, j-1)
     return s[(n,m)]
-# a =  open("hi.txt").read()
-# b = a.split("\n")
-# c = b[0].split(" ")
-# n,m = int(c[0]), int(c[1])
-# d = b.index("-")
-# Down = []
-# Down0 = b[1:d]
-# for ele in Down0:
-#     Down.append(ele.split(" "))
-# Right = []
-# Right0 = b[d+1:]
-# for ele in Right0:
-#     Right.append(ele.split(" "))
-#
-# print(ManhattanTourist(n, m, Down, Right))
+
+
+
+
 import sys
 sys.setrecursionlimit(3000)
 def LCSBackTrack(v, w):
@@ -155,16 +134,6 @@ def OutputLCS(backtrack, v, i, j):
     Input: Two strings s and t.
     Output: A longest common subsequence of s and t. (Note: more than one solution may exist, in which case you may output any one.)
     """
-
-    # if i == 0 or j == 0:
-    #         return ""
-    # if backtrack[(i, j)] == "↓":
-    #     return OutputLCS(backtrack, v, i-1, j)
-    # elif backtrack[(i, j)] == "→":
-    #     return OutputLCS(backtrack, v, i, j-1)
-    # else:
-    #     return OutputLCS(backtrack, v, i - 1, j - 1) + v[i] (v[i-1])????
-    LCS = ""
     while i > 0 and j > 0:
         if backtrack[(i,j)] == "↘":
             LCS= LCS + v[i-1]
@@ -203,75 +172,6 @@ def LongestPathDAG(st, en , edges):
     return score, longpath
 
 
-# a =  open("hi.txt").read()
-# b = a.split("\n")
-# n,m = b[0], b[1]
-# c = b[2:]
-# ed=[]
-# sc=[]
-# for ele in c:
-#     temp =ele.split(":")
-#     sc.append(int(temp[-1]))
-#     temp2 = temp[0].split("->")
-#     edg = (temp2[0], temp2[1])
-#     ed.append(edg)
-
-
-def LongestPathDAG2(st, en , edges):
-    """
-    Input: An integer representing the starting node to consider in a graph, followed by an integer representing the ending node to consider, followed by a list of edges in the graph. The edge notation "0->1:7" indicates that an edge connects node 0 to node 1 with weight 7.  You may assume a given topological order corresponding to nodes in increasing order.
-    Output: The length of a longest path in the graph, followed by a longest path. (If multiple longest paths exist, you may return any one.)
-    """
-    ways = []
-    return
-
-# a =  open("hi.txt").read()
-# b = a.split("\n")
-# n,m = b[0], b[1]
-# c = b[2:]
-# edges = {}
-# edges2 = {}
-# for ele in c:
-#     temp =ele.split(":")
-#     temp2 = temp[0].split("->")
-#     if temp2[1] not in edges.keys():
-#         edges[temp2[1]] = [[temp2[0], temp[1]]]
-#     else:
-#         edges[temp2[1]].extend([[temp2[0], temp[1]]])
-#     edg = (temp2[0], temp2[1])
-#     edges2[edg] = int(temp[-1])
-# print(edges, edges2)
-
-# so, lo = LongestPathDAG(n, m, edges)
-# print(so, lo)
-# print("->".join(map(str, lo))
-# aminoAcid = ["x", "z"]
-# mass = {"x":2, "z":3}
-# def Mass(pep):
-#     mass3 = 0
-#     for p in pep:
-#         mass3 += mass[p]
-#     return mass3
-# def Expand(Peptid):
-#     pept = []
-#     for pep in Peptid:
-#         for am in aminoAcid:
-#             ne = pep + am
-#             pept.append(ne)
-#     return pept
-# resultin = {}
-# sta = [""]
-# for i in range(14):
-#     a = Expand(sta)
-#     sta.extend(a)
-#     for s in sta:
-#         resultin[s] = Mass(s)
-# n = 0
-# for r in resultin:
-#     if resultin[r] == 24:
-#         print(r)
-#         n+=1
-# print(n)
 
 scorematrix = {'A': {'A': 4, 'C': 0, 'E': -1, 'D': -2, 'G': 0, 'F': -2, 'I': -1, 'H': -2, 'K': -1, 'M': -1, 'L': -1, 'N': -2, 'Q': -1, 'P': -1, 'S': 1, 'R': -1, 'T': 0, 'W': -3, 'V': 0, 'Y': -2}, 'C': {'A': 0, 'C': 9, 'E': -4, 'D': -3, 'G': -3, 'F': -2, 'I': -1, 'H': -3, 'K': -3, 'M': -1, 'L': -1, 'N': -3, 'Q': -3, 'P': -3, 'S': -1, 'R': -3, 'T': -1, 'W': -2, 'V': -1, 'Y': -2}, 'E': {'A': -1, 'C': -4, 'E': 5, 'D': 2, 'G': -2, 'F': -3, 'I': -3, 'H': 0, 'K': 1, 'M': -2, 'L': -3, 'N': 0, 'Q': 2, 'P': -1, 'S': 0, 'R': 0, 'T': -1, 'W': -3, 'V': -2, 'Y': -2}, 'D': {'A': -2, 'C': -3, 'E': 2, 'D': 6, 'G': -1, 'F': -3, 'I': -3, 'H': -1, 'K': -1, 'M': -3, 'L': -4, 'N': 1, 'Q': 0, 'P': -1, 'S': 0, 'R': -2, 'T': -1, 'W': -4, 'V': -3, 'Y': -3}, 'G': {'A': 0, 'C': -3, 'E': -2, 'D': -1, 'G': 6, 'F': -3, 'I': -4, 'H': -2, 'K': -2, 'M': -3, 'L': -4, 'N': 0, 'Q': -2, 'P': -2, 'S': 0, 'R': -2, 'T': -2, 'W': -2, 'V': -3, 'Y': -3}, 'F': {'A': -2, 'C': -2, 'E': -3, 'D': -3, 'G': -3, 'F': 6, 'I': 0, 'H': -1, 'K': -3, 'M': 0, 'L': 0, 'N': -3, 'Q': -3, 'P': -4, 'S': -2, 'R': -3, 'T': -2, 'W': 1, 'V': -1, 'Y': 3}, 'I': {'A': -1, 'C': -1, 'E': -3, 'D': -3, 'G': -4, 'F': 0, 'I': 4, 'H': -3, 'K': -3, 'M': 1, 'L': 2, 'N': -3, 'Q': -3, 'P': -3, 'S': -2, 'R': -3, 'T': -1, 'W': -3, 'V': 3, 'Y': -1}, 'H': {'A': -2, 'C': -3, 'E': 0, 'D': -1, 'G': -2, 'F': -1, 'I': -3, 'H': 8, 'K': -1, 'M': -2, 'L': -3, 'N': 1, 'Q': 0, 'P': -2, 'S': -1, 'R': 0, 'T': -2, 'W': -2, 'V': -3, 'Y': 2}, 'K': {'A': -1, 'C': -3, 'E': 1, 'D': -1, 'G': -2, 'F': -3, 'I': -3, 'H': -1, 'K': 5, 'M': -1, 'L': -2, 'N': 0, 'Q': 1, 'P': -1, 'S': 0, 'R': 2, 'T': -1, 'W': -3, 'V': -2, 'Y': -2}, 'M': {'A': -1, 'C': -1, 'E': -2, 'D': -3, 'G': -3, 'F': 0, 'I': 1, 'H': -2, 'K': -1, 'M': 5, 'L': 2, 'N': -2, 'Q': 0, 'P': -2, 'S': -1, 'R': -1, 'T': -1, 'W': -1, 'V': 1, 'Y': -1}, 'L': {'A': -1, 'C': -1, 'E': -3, 'D': -4, 'G': -4, 'F': 0, 'I': 2, 'H': -3, 'K': -2, 'M': 2, 'L': 4, 'N': -3, 'Q': -2, 'P': -3, 'S': -2, 'R': -2, 'T': -1, 'W': -2, 'V': 1, 'Y': -1}, 'N': {'A': -2, 'C': -3, 'E': 0, 'D': 1, 'G': 0, 'F': -3, 'I': -3, 'H': 1, 'K': 0, 'M': -2, 'L': -3, 'N': 6, 'Q': 0, 'P': -2, 'S': 1, 'R': 0, 'T': 0, 'W': -4, 'V': -3, 'Y': -2}, 'Q': {'A': -1, 'C': -3, 'E': 2, 'D': 0, 'G': -2, 'F': -3, 'I': -3, 'H': 0, 'K': 1, 'M': 0, 'L': -2, 'N': 0, 'Q': 5, 'P': -1, 'S': 0, 'R': 1, 'T': -1, 'W': -2, 'V': -2, 'Y': -1}, 'P': {'A': -1, 'C': -3, 'E': -1, 'D': -1, 'G': -2, 'F': -4, 'I': -3, 'H': -2, 'K': -1, 'M': -2, 'L': -3, 'N': -2, 'Q': -1, 'P': 7, 'S': -1, 'R': -2, 'T': -1, 'W': -4, 'V': -2, 'Y': -3}, 'S': {'A': 1, 'C': -1, 'E': 0, 'D': 0, 'G': 0, 'F': -2, 'I': -2, 'H': -1, 'K': 0, 'M': -1, 'L': -2, 'N': 1, 'Q': 0, 'P': -1, 'S': 4, 'R': -1, 'T': 1, 'W': -3, 'V': -2, 'Y': -2}, 'R': {'A': -1, 'C': -3, 'E': 0, 'D': -2, 'G': -2, 'F': -3, 'I': -3, 'H': 0, 'K': 2, 'M': -1, 'L': -2, 'N': 0, 'Q': 1, 'P': -2, 'S': -1, 'R': 5, 'T': -1, 'W': -3, 'V': -3, 'Y': -2}, 'T': {'A': 0, 'C': -1, 'E': -1, 'D': -1, 'G': -2, 'F': -2, 'I': -1, 'H': -2, 'K': -1, 'M': -1, 'L': -1, 'N': 0, 'Q': -1, 'P': -1, 'S': 1, 'R': -1, 'T': 5, 'W': -2, 'V': 0, 'Y': -2}, 'W': {'A': -3, 'C': -2, 'E': -3, 'D': -4, 'G': -2, 'F': 1, 'I': -3, 'H': -2, 'K': -3, 'M': -1, 'L': -2, 'N': -4, 'Q': -2, 'P': -4, 'S': -3, 'R': -3, 'T': -2, 'W': 11, 'V': -3, 'Y': 2}, 'V': {'A': 0, 'C': -1, 'E': -2, 'D': -3, 'G': -3, 'F': -1, 'I': 3, 'H': -3, 'K': -2, 'M': 1, 'L': 1, 'N': -3, 'Q': -2, 'P': -2, 'S': -2, 'R': -3, 'T': 0, 'W': -3, 'V': 4, 'Y': -1}, 'Y': {'A': -2, 'C': -2, 'E': -2, 'D': -3, 'G': -3, 'F': 3, 'I': -1, 'H': 2, 'K': -2, 'M': -1, 'L': -1, 'N': -2, 'Q': -1, 'P': -3, 'S': -2, 'R': -2, 'T': -2, 'W': 2, 'V': -1, 'Y': 7}}
 def LCSBackTrackGlobal(v, w):
@@ -329,6 +229,9 @@ def GlobalAlignmentProblem(v, w):
         newW= newW + w[0]
         newV= newV + "-"
     return newV[::-1], newW[::-1], score
+
+
+
 pam250 = {'A': {'A': 2, 'C': -2, 'E': 0, 'D': 0, 'G': 1, 'F': -3, 'I': -1, 'H': -1, 'K': -1, 'M': -1, 'L': -2, 'N': 0, 'Q': 0, 'P': 1, 'S': 1, 'R': -2, 'T': 1, 'W': -6, 'V': 0, 'Y': -3}, 'C': {'A': -2, 'C': 12, 'E': -5, 'D': -5, 'G': -3, 'F': -4, 'I': -2, 'H': -3, 'K': -5, 'M': -5, 'L': -6, 'N': -4, 'Q': -5, 'P': -3, 'S': 0, 'R': -4, 'T': -2, 'W': -8, 'V': -2, 'Y': 0}, 'E': {'A': 0, 'C': -5, 'E': 4, 'D': 3, 'G': 0, 'F': -5, 'I': -2, 'H': 1, 'K': 0, 'M': -2, 'L': -3, 'N': 1, 'Q': 2, 'P': -1, 'S': 0, 'R': -1, 'T': 0, 'W': -7, 'V': -2, 'Y': -4}, 'D': {'A': 0, 'C': -5, 'E': 3, 'D': 4, 'G': 1, 'F': -6, 'I': -2, 'H': 1, 'K': 0, 'M': -3, 'L': -4, 'N': 2, 'Q': 2, 'P': -1, 'S': 0, 'R': -1, 'T': 0, 'W': -7, 'V': -2, 'Y': -4}, 'G': {'A': 1, 'C': -3, 'E': 0, 'D': 1, 'G': 5, 'F': -5, 'I': -3, 'H': -2, 'K': -2, 'M': -3, 'L': -4, 'N': 0, 'Q': -1, 'P': 0, 'S': 1, 'R': -3, 'T': 0, 'W': -7, 'V': -1, 'Y': -5}, 'F': {'A': -3, 'C': -4, 'E': -5, 'D': -6, 'G': -5, 'F': 9, 'I': 1, 'H': -2, 'K': -5, 'M': 0, 'L': 2, 'N': -3, 'Q': -5, 'P': -5, 'S': -3, 'R': -4, 'T': -3, 'W': 0, 'V': -1, 'Y': 7}, 'I': {'A': -1, 'C': -2, 'E': -2, 'D': -2, 'G': -3, 'F': 1, 'I': 5, 'H': -2, 'K': -2, 'M': 2, 'L': 2, 'N': -2, 'Q': -2, 'P': -2, 'S': -1, 'R': -2, 'T': 0, 'W': -5, 'V': 4, 'Y': -1}, 'H': {'A': -1, 'C': -3, 'E': 1, 'D': 1, 'G': -2, 'F': -2, 'I': -2, 'H': 6, 'K': 0, 'M': -2, 'L': -2, 'N': 2, 'Q': 3, 'P': 0, 'S': -1, 'R': 2, 'T': -1, 'W': -3, 'V': -2, 'Y': 0}, 'K': {'A': -1, 'C': -5, 'E': 0, 'D': 0, 'G': -2, 'F': -5, 'I': -2, 'H': 0, 'K': 5, 'M': 0, 'L': -3, 'N': 1, 'Q': 1, 'P': -1, 'S': 0, 'R': 3, 'T': 0, 'W': -3, 'V': -2, 'Y': -4}, 'M': {'A': -1, 'C': -5, 'E': -2, 'D': -3, 'G': -3, 'F': 0, 'I': 2, 'H': -2, 'K': 0, 'M': 6, 'L': 4, 'N': -2, 'Q': -1, 'P': -2, 'S': -2, 'R': 0, 'T': -1, 'W': -4, 'V': 2, 'Y': -2}, 'L': {'A': -2, 'C': -6, 'E': -3, 'D': -4, 'G': -4, 'F': 2, 'I': 2, 'H': -2, 'K': -3, 'M': 4, 'L': 6, 'N': -3, 'Q': -2, 'P': -3, 'S': -3, 'R': -3, 'T': -2, 'W': -2, 'V': 2, 'Y': -1}, 'N': {'A': 0, 'C': -4, 'E': 1, 'D': 2, 'G': 0, 'F': -3, 'I': -2, 'H': 2, 'K': 1, 'M': -2, 'L': -3, 'N': 2, 'Q': 1, 'P': 0, 'S': 1, 'R': 0, 'T': 0, 'W': -4, 'V': -2, 'Y': -2}, 'Q': {'A': 0, 'C': -5, 'E': 2, 'D': 2, 'G': -1, 'F': -5, 'I': -2, 'H': 3, 'K': 1, 'M': -1, 'L': -2, 'N': 1, 'Q': 4, 'P': 0, 'S': -1, 'R': 1, 'T': -1, 'W': -5, 'V': -2, 'Y': -4}, 'P': {'A': 1, 'C': -3, 'E': -1, 'D': -1, 'G': 0, 'F': -5, 'I': -2, 'H': 0, 'K': -1, 'M': -2, 'L': -3, 'N': 0, 'Q': 0, 'P': 6, 'S': 1, 'R': 0, 'T': 0, 'W': -6, 'V': -1, 'Y': -5}, 'S': {'A': 1, 'C': 0, 'E': 0, 'D': 0, 'G': 1, 'F': -3, 'I': -1, 'H': -1, 'K': 0, 'M': -2, 'L': -3, 'N': 1, 'Q': -1, 'P': 1, 'S': 2, 'R': 0, 'T': 1, 'W': -2, 'V': -1, 'Y': -3}, 'R': {'A': -2, 'C': -4, 'E': -1, 'D': -1, 'G': -3, 'F': -4, 'I': -2, 'H': 2, 'K': 3, 'M': 0, 'L': -3, 'N': 0, 'Q': 1, 'P': 0, 'S': 0, 'R': 6, 'T': -1, 'W': 2, 'V': -2, 'Y': -4}, 'T': {'A': 1, 'C': -2, 'E': 0, 'D': 0, 'G': 0, 'F': -3, 'I': 0, 'H': -1, 'K': 0, 'M': -1, 'L': -2, 'N': 0, 'Q': -1, 'P': 0, 'S': 1, 'R': -1, 'T': 3, 'W': -5, 'V': 0, 'Y': -3}, 'W': {'A': -6, 'C': -8, 'E': -7, 'D': -7, 'G': -7, 'F': 0, 'I': -5, 'H': -3, 'K': -3, 'M': -4, 'L': -2, 'N': -4, 'Q': -5, 'P': -6, 'S': -2, 'R': 2, 'T': -5, 'W': 17, 'V': -6, 'Y': 0}, 'V': {'A': 0, 'C': -2, 'E': -2, 'D': -2, 'G': -1, 'F': -1, 'I': 4, 'H': -2, 'K': -2, 'M': 2, 'L': 2, 'N': -2, 'Q': -2, 'P': -1, 'S': -1, 'R': -2, 'T': 0, 'W': -6, 'V': 4, 'Y': -2}, 'Y': {'A': -3, 'C': 0, 'E': -4, 'D': -4, 'G': -5, 'F': 7, 'I': -1, 'H': 0, 'K': -4, 'M': -2, 'L': -1, 'N': -2, 'Q': -4, 'P': -5, 'S': -3, 'R': -4, 'T': -3, 'W': 0, 'V': -2, 'Y': 10}}
 def LCSBackTrackLocal(v, w):
     s = {(0,0): 0}
@@ -388,6 +291,9 @@ def LocalAlignmentProblem(v, w):
         weight = backtrack[(i,j)]
     return newV[::-1], newW[::-1], score
 # print(LocalAlignmentProblem("MEANLY", "PENALTY"))
+
+
+
 def EditDistanceProblemBacktrack(v, w):
     """
     Input: Two strings.
@@ -416,6 +322,9 @@ def EditDistanceProblemBacktrack(v, w):
             elif s[(i, j)] == b:
                 Backtrack[(i, j)] = "→"
     return Backtrack
+
+
+
 def EditDistanceProblem(v, w):
     """
     Input: Two strings.
@@ -546,13 +455,9 @@ def FittingAlignmentProblem(v, w):
     else:
         bestv, bestw = best[score-1][0][0], best[score-1][0][1]
         score = score-1
-    # if newV[::-1][0] != v[0]:
-    #     newV= newV + v[0]
-    #     newW= newW + "-"
-    # elif newW[::-1][0] != w[0]:
-    #     newW= newW + w[0]
-    #     newV= newV + "-"
     return bestv, bestw, score
+
+
 def LCSBackTrackAlignmentOverlap(v, w):
     s = {(0,0): 0}
     Backtrack = {}
@@ -760,128 +665,8 @@ def AffineGapPenaltiesProblem(v, w):
         node = (i,j)
     return newV[::-1], newW[::-1], score
 
-# def FromSource(v, w):
-#     s = {(0,0): 0}
-#     maxColumn = {}
-#     best = -10000
-#     bestn = ()
-#     if len(v) == 1 and len(w)== 1:
-#         best = BLOSUM62[v[0]][w[0]]
-#         bestn = (0,0)
-#         return best, bestn
-#     if len(v) == 0:
-#         best = -5
-#         bestn = (0,0)
-#         return best, bestn
-#     if len(w) == 0:
-#         best = -5
-#         bestn = (0,0)
-#         return best, bestn
-#     for i in range(1, len(v)+1):
-#         s[(i, 0)] = s[(i-1, 0)] -5
-#     for j in range(1, len(w)+1):
-#         s[(0, j)] = s[(0, j-1)] -5
-#     for i in range(1, len(v)+1):
-#         for j in range(1, len(w)+1):
-#             a =s[(i-1, j)] -5
-#             b = s[(i,j-1)] - 5
-#             c = s[(i-1, j-1)] + BLOSUM62[v[i-1]][w[j-1]]
-#             s[(i, j)] = max([ a, b ,c ])
-#             if i == len(v):
-#                 if s[(i, j)] > best:
-#                     bestn = (i,j)
-#                     best = s[(i,j)]
-#     return best, bestn
-# def ToSink(v, w, node):
-#     v= v[::-1]
-#     w = w[::-1]
-#     s = {(0,0): 0}
-#     maxColumn = {}
-#     best = -10000
-#     bestn = ()
-#     if len(v) == 1 and len(w)== 1:
-#         best = BLOSUM62[v[0]][w[0]]
-#         bestn = (0,0)
-#         edge = "D"
-#         return best, bestn, edge
-#     if len(v) == 0:
-#         best = -5
-#         bestn = (0,0)
-#         edge = "H"
-#         return best, bestn, edge
-#     if len(w) == 0:
-#         best = -5
-#         bestn = (0,0)
-#         edge = "V"
-#         return best, bestn, edge
-#     for i in range(1, len(v)+1):
-#         s[(i, 0)] = s[(i-1, 0)] -5
-#     for j in range(1, len(w)+1):
-#         s[(0, j)] = s[(0, j-1)] -5
-#     for i in range(1, len(v)+1):
-#         for j in range(1, len(w)+1):
-#             a =s[(i-1, j)] -5
-#             b = s[(i,j-1)] - 5
-#             c = s[(i-1, j-1)] + BLOSUM62[v[i-1]][w[j-1]]
-#             s[(i, j)] = max([ a, b ,c ])
-#             if i == len(v):
-#                 if s[(i, j)] >= best:
-#                     if (i, j-1) == node:
-#                         bestn = (i,j)
-#                         best = s[(i,j)]
-#                         edge = "H"
-#                     elif (i-1, j) == node:
-#                         bestn = (i,j)
-#                         best = s[(i,j)]
-#                         edge = "V"
-#                     elif (i-1, j-1) == node:
-#                         bestn = (i,j)
-#                         best = s[(i,j)]
-#                         edge ="D"
-#                     else:
-#                         edge = "-"
-#                         bestn = node
-#
-#     return best, bestn, edge
-# def MiddleEdgeinLinearSpaceProblem(v, w):
-#     """
-#     Input: Two amino acid strings.
-#     Output: A middle edge in the alignment graph in the form "(i, j) (k, l)", where (i, j) connects to (k, l). To compute scores, use the BLOSUM62 scoring matrix and a (linear) indel penalty equal to 5.
-#     """
-#     if len(w)%2 != 0:
-#         width = len(w)//2 +1
-#     else:
-#         width = len(w)//2
-#     if len(w)//2 == 0:
-#         b = (0, len(v)-1)
-#         a= 0
-#     else:
-#         a, b = FromSource(w[:width], v)
-#     c, d, edge = ToSink(w[width:], v, b)
-#     return  (b[1],b[0]), (d[1], d[0]), edge, c+(c-a)
-# def LinearSpaceAlignment(v, w):
-#     """
-#     Input: Two long (10000 amino acid) protein strings written in the single-letter amino acid alphabet.
-#     Output: The maximum alignment score of these strings, followed by an alignment achieving this maximum score. Use the BLOSUM62 scoring matrix and indel penalty σ = 5.
-#     """
-#
-#     backtrack = ""
-#     top , bottom = 1, len(w)
-#     right, left = 1 , len(v)
-#     if right == left:
-#         v = ""
-#         return (bottom - top)*"-"
-#     if top == bottom:
-#         w = ""
-#         return (right-left)*"-"
-#     a, b, edge, score = MiddleEdgeinLinearSpaceProblem(v, w)
-#     v1= v[:b[1]]
-#     v2 = v[a[1]:]
-#     w1 = w[:b[0]]
-#     w2 = w[a[0]:]
-#     backtrack+= edge
-#     return LinearSpaceAlignment(v1, w1) + backtrack + LinearSpaceAlignment(v2, w2)
-# print(LinearSpaceAlignment("PLEASANTLY", "MEANLY"))
+
+
 def FromSource(v, w):
     s = {(0,0): 0}
     maxColumn = {}
@@ -923,27 +708,9 @@ def ToSink(v, w):
             b = s[(i,j-1)] - 5
             c = s[(i-1, j-1)] + BLOSUM62[v[i-1]][w[j-1]]
             s[(i, j)] = max([ a, b ,c ])
-            if j == len(w):
-                bestn[(i,j)] = s[(i,j)]
-                # if val == 0:
-                #     if (i, j-1) == node or (i-1, j) == node:
-                #         if s[(i, j)]-5 >= best:
-                #             bestn = (i,j)
-                #             best = s[(i,j)]
-                #     elif (i-1, j-1) == node:
-                #         if s[(i, j)]+BLOSUM62[v[i-1]][w[j-1]] >= best:
-                #             bestn = (i,j)
-                #             best = s[(i,j)]
-                # else:
-                #     if (i, j-2) == node or (i-1, j-1) == node:
-                #         if s[(i, j)]-5 > best:
-                #             bestn = (i,j-1)
-                #             best = s[(i,j)]
-                #     elif (i-1, j-2) == node:
-                #          if s[(i-1, j-1)]+BLOSUM62[v[i]][w[j]] > best:
-                #              bestn = (i,j)
-                #              best = s[(i,j-1)]
     return bestn
+
+
 def MiddleEdgeinLinearSpaceProblem(v, w):
     """
     Input: Two amino acid strings.
@@ -961,6 +728,7 @@ def MiddleEdgeinLinearSpaceProblem(v, w):
             best2 = ToSink(v,w[len(w)//2:])
     return best1, best2
 # print(MiddleEdgeinLinearSpaceProblem("PLEASANTLY", "MEASNLY"))
+
 def LinearSpaceAlignment(v, w):
     """
     Input: Two long (10000 amino acid) protein strings written in the single-letter amino acid alphabet.
