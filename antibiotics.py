@@ -256,14 +256,6 @@ def Trim(Leaderboard, Spectrum, N):
         finalleader[pep] = Leaderboard[pep]
     return finalleader
 
-    # else:
-    #     scores.sort(reverse = True)
-    # n = scores[N]
-    # for e in scores:
-    #     if e > N:
-    #         for lea in leaderscore[e]:
-    #             finalleader[lea]=Leaderboard[lea]
-    # return finalleader
 aminoAcid2 = ['G', 'A', 'S', 'P', 'V', 'T', 'C', 'L', 'N', 'D', 'Q', 'E', 'M', 'H', 'F', 'R', 'Y', 'W']
 def Expand3(Peptid):
     pept = {}
@@ -273,6 +265,8 @@ def Expand3(Peptid):
             m= Peptid[pep]+ mass[am]
             pept[ne] = m
     return pept
+
+
 def LeaderboardCyclopeptideSequencing(N, Spectrum):
     Leaderboard = {"":0}
     LeaderPeptide = ""
@@ -405,6 +399,9 @@ def CyclicSpectrumnonp(Peptide, Alphabet):
                 CyclicSpectrum.append(b)
     CyclicSpectrum.sort()
     return CyclicSpectrum
+
+
+
 def CyclopeptideScoringnonp(Peptide, Spectrum):
     """
     Input: An amino acid string Peptide and a collection of integers Spectrum.
@@ -462,14 +459,7 @@ def Trimnonp(Leaderboard, Spectrum, N):
         finalleader[pep] = Leaderboard[pep]
     return finalleader
 
-    # else:
-    #     scores.sort(reverse = True)
-    # n = scores[N]
-    # for e in scores:
-    #     if e > N:
-    #         for lea in leaderscore[e]:
-    #             finalleader[lea]=Leaderboard[lea]
-    # return finalleader
+
 def Expandnonp(Peptid, alphapet):
     pept = {}
     for pep in list(Peptid.keys()):
@@ -478,6 +468,8 @@ def Expandnonp(Peptid, alphapet):
             m= Peptid[pep]+ am
             pept[ne] = m
     return pept
+
+
 def LeaderboardCyclopeptideSequencingnonp(N, Spectrum, alphapet):
     Leaderboard = {():0}
     LeaderPeptide = ()
